@@ -23,6 +23,10 @@ window/size/test_height=600
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[global]
+
+overs=false
+
 [importer_defaults]
 
 texture={
@@ -65,6 +69,11 @@ jump={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_19="HAZARD"
+2d_physics/layer_20="PICKUP"
+
 [physics]
 
 common/enable_pause_aware_picking=true
@@ -73,3 +82,4 @@ common/enable_pause_aware_picking=true
 
 2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

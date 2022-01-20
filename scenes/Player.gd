@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died
+
 const GRAVITY = 1000
 var maxHorizontalSpeed = 140
 var jumpSpeed = 500
@@ -10,7 +12,7 @@ var hasDoubleJump = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$HazardArea.connect("area_entered", self, "on_hazard_area_entered")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,3 +70,7 @@ func update_animation():
 		
 	if (moveVector.x != 0):
 		$AnimatedSprite.flip_h = true if moveVector.x > 0 else false
+
+func on_hazard_area_entered(area2d):
+	emit_signal("died")
+	print("die")

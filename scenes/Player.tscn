@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/character_0000.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 14.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5, 10.25 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -35,12 +38,20 @@ script = ExtResource( 1 )
 wait_time = 0.1
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PickupArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 light_mask = 524800
 position = Vector2( 0, -12 )
 shape = SubResource( 3 )
+
+[node name="HazardArea" type="Area2D" parent="."]
+collision_layer = 262144
+collision_mask = 262144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+position = Vector2( 0, -10.25 )
+shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12 )
