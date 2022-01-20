@@ -71,6 +71,6 @@ func update_animation():
 	if (moveVector.x != 0):
 		$AnimatedSprite.flip_h = true if moveVector.x > 0 else false
 
-func on_hazard_area_entered(area2d):
+func on_hazard_area_entered(_area2d):
 	emit_signal("died")
 	print("die")
