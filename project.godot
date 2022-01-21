@@ -76,6 +76,9 @@ dash={
 
 [layer_names]
 
+2d_physics/layer_1="TERRAIN"
+2d_physics/layer_2="ENEMY"
+2d_physics/layer_17="ENEMY_HAZARD"
 2d_physics/layer_18="ENEMY_GOAL"
 2d_physics/layer_19="HAZARD"
 2d_physics/layer_20="PICKUP"
