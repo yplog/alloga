@@ -8,7 +8,7 @@
 radius = 14.0
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 5, 10.25 )
+extents = Vector2( 9, 10.25 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -17,15 +17,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "run",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -39,6 +39,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="PickupArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 light_mask = 524800
@@ -59,6 +60,7 @@ frames = SubResource( 2 )
 animation = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 use_parent_material = true
 position = Vector2( 0, -10 )
 shape = SubResource( 1 )
