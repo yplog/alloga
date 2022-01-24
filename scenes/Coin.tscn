@@ -76,7 +76,7 @@ tracks/2/keys = {
 [node name="Coin" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["coin"]]
 collision_layer = 524288
 collision_mask = 524288
 
@@ -87,7 +87,6 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1.03575 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
