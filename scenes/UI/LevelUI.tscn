@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/UI/LevelUI.gd" type="Script" id=2]
+[ext_resource path="res://resources/font_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/coin/tile_0152.png" type="Texture" id=4]
+[ext_resource path="res://assets/coin/tile_0151.png" type="Texture" id=5]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 2
+fps = 6.0
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
 
 [node name="LevelUI" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -9,19 +19,35 @@ script = ExtResource( 2 )
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 9.0
-margin_top = 9.0
-margin_right = 9.0
-margin_bottom = 9.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 4.0
 mouse_filter = 2
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CoinLabel" type="Label" parent="MarginContainer"]
-margin_right = 26.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 41.0
 margin_bottom = 13.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_right = 11.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 11, 11 )
+size_flags_horizontal = 5
+size_flags_vertical = 9
+texture = SubResource( 1 )
+
+[node name="CoinLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 15.0
+margin_right = 41.0
+margin_bottom = 13.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 3 )
 text = "0 / 0"
