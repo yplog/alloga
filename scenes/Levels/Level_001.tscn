@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Spikes.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/EnemyGoal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/EnemySpawner.tscn" type="PackedScene" id=5]
 
 [node name="Level_001" instance=ExtResource( 1 )]
 
@@ -14,14 +15,14 @@ tile_data = PoolIntArray( -393202, 4, 0, -393201, 4, 2, -262153, 4, 0, -262152, 
 [node name="Flag" parent="." index="3"]
 position = Vector2( 230, 0 )
 
-[node name="Enemy" parent="Enemies" index="0"]
-position = Vector2( 47, 73 )
-
-[node name="EnemyGoal" parent="Enemies" index="1" instance=ExtResource( 3 )]
+[node name="EnemyGoal" parent="Enemies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 11, 73 )
 
-[node name="EnemyGoal2" parent="Enemies" index="2" instance=ExtResource( 3 )]
+[node name="EnemyGoal2" parent="Enemies" index="1" instance=ExtResource( 3 )]
 position = Vector2( 149, 73 )
+
+[node name="EnemySpawner" parent="Enemies" index="2" instance=ExtResource( 5 )]
+position = Vector2( 86, 63 )
 
 [node name="Hazards" type="Node2D" parent="." index="5"]
 position = Vector2( 0, 1 )
