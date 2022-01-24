@@ -13,6 +13,7 @@ var jumpTerminationMultiplier = 3
 var velocity = Vector2.ZERO
 var horizontalAcceleration = 8000
 var hasDoubleJump = false
+var hasDash = false
 var maxDashSpeed = 500
 var minDashSpeed = 200
 
@@ -78,10 +79,12 @@ func process_normal(delta):
 	
 	if (is_on_floor()):
 		hasDoubleJump = true
+		hasDash = true
 	
-	if (Input.is_action_just_pressed("dash")):
+	if (hasDash && Input.is_action_just_pressed("dash")):
 		change_state(State.DASHING)
 		call_deferred("change_state", State.DASHING)
+		hasDash = false
 	
 	update_animation()
 
