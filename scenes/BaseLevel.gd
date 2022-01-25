@@ -1,5 +1,7 @@
 extends Node
 
+export(PackedScene) var levelCompleteScene
+
 signal coin_total_changed
 
 var playerScene = preload("res://scenes/Player.tscn")
@@ -40,4 +42,7 @@ func on_player_died():
 	create_player()
 
 func on_player_won():
-	$"/root/LevelManager".increment_level()
+	currentPlayerNode.queue_free()
+	var levelComplete = levelCompleteScene.instance()
+	add_child(levelComplete)
+	#$"/root/LevelManager".increment_level()
