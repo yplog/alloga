@@ -1,2 +1,1 @@
-# alloga
-Platform Game 
+# alloga Platform Game 
