@@ -6,6 +6,8 @@ enum State { NORMAL, DASHING }
 
 export(int, LAYERS_2D_PHYSICS) var dashHazardMask
 
+var footstepParticles = preload("res://scenes/FootstepParticles.tscn")
+
 const GRAVITY = 1000
 var maxHorizontalSpeed = 140
 var jumpSpeed = 500
@@ -25,6 +27,7 @@ var defaultHazardMask = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HazardArea.connect("area_entered", self, "on_hazard_area_entered")
+	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
 	defaultHazardMask = $HazardArea.collision_mask
 
 
@@ -77,6 +80,9 @@ func process_normal(delta):
 	
 	if (wasOnFloor && !is_on_floor()):
 		$CoyoteTimer.start()
+	
+	if (!wasOnFloor && is_on_floor() && !isStateNew):
+		spawn_footstep()
 	
 	if (is_on_floor()):
 		hasDoubleJump = true
@@ -137,3 +143,12 @@ func update_animation():
 func on_hazard_area_entered(_area2d):
 	emit_signal("died")
 	print("die")
+
+func spawn_footstep():
+	var footstep = footstepParticles.instance()
+	get_parent().add_child(footstep)
+	footstep.global_position = global_position
+
+func on_animated_sprite_frame_changed():
+	if ($AnimatedSprite.animation == "run" && $AnimatedSprite.frame == 0):
+		spawn_footstep()
