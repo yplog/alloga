@@ -141,6 +141,7 @@ func update_animation():
 
 
 func on_hazard_area_entered(_area2d):
+	
 	emit_signal("died")
 	print("die")
 

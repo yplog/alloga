@@ -3,6 +3,10 @@ extends Node
 export(PackedScene) var levelCompleteScene
 
 signal coin_total_changed
+signal reset_timer
+signal stop_timer
+
+onready var timer = get_node("Timer")
 
 var playerScene = preload("res://scenes/Player.tscn")
 var spawnPosition = Vector2.ZERO
@@ -13,7 +17,6 @@ var collectedCoins = 0
 func _ready():
 	spawnPosition = $Player.global_position
 	register_player($Player)
-	
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 	
 	$Flag.connect("player_won", self, "on_player_won")
@@ -37,11 +40,20 @@ func create_player():
 	playerInstance.global_position = spawnPosition
 	register_player(playerInstance)
 
+func reset_timer():
+	emit_signal("reset_timer")
+
+func stop_timer():
+	emit_signal("stop_timer")
+
 func on_player_died():
+	reset_timer()
 	currentPlayerNode.queue_free()
 	create_player()
 
 func on_player_won():
+	timer.stop()
+	stop_timer()
 	currentPlayerNode.queue_free()
 	var levelComplete = levelCompleteScene.instance()
 	add_child(levelComplete)
