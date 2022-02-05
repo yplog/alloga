@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var timer_text = 0
+var timer_text = "00:000"
 var time = 0
 var timer_on = false
 
