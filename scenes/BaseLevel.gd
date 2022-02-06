@@ -47,7 +47,6 @@ func stop_timer():
 	emit_signal("stop_timer")
 
 func on_player_died():
-	reset_timer()
 	currentPlayerNode.queue_free()
 	create_player()
 
