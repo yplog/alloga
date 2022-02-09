@@ -19,5 +19,7 @@ func score():
 	
 	if (float(timer_label.text) < 5):
 		score = coin * (5 - float(timer_label.text))
+	else:
+		score = coin
 	
 	$PanelContainer/VBoxContainer/Score.text = "Score: " + str(int(score))
